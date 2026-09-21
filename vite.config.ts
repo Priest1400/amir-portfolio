@@ -3,5 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/amir-portfolio/', // نام دقیق مخزن شما در گیت‌هاب
+  base: '/amir-portfolio/',
+  build: {
+    outDir: 'docs'
+  }
 })
