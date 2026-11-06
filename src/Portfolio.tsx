@@ -1,87 +1,120 @@
 import { useState } from 'react'
-import { Terminal, Code2, Database, Smartphone, Languages, Mail, Cpu, Server, CheckCircle2 } from 'lucide-react'
+import { 
+    BookOpen, 
+    Code2, 
+    GraduationCap, 
+    Github, 
+    Linkedin, 
+    FileText, 
+    Mail, 
+    Layers, 
+    Smartphone, 
+    Server,
+    ExternalLink,
+    ChevronLeft,
+    Languages
+} from 'lucide-react'
 
 export default function Portfolio() {
     const [lang, setLang] = useState<'fa' | 'en'>('fa')
-
     const toggleLang = () => setLang(prev => (prev === 'fa' ? 'en' : 'fa'))
 
     const dict = {
         fa: {
             dir: 'rtl',
             font: 'font-sans',
-            nav: { stack: 'مهارت های فنی', architecture: 'معماری و تخصص', contact: 'ارتباط' },
-            terminalTitle: 'bash - amirhossein@dev-node: ~',
+            nav: { about: 'درباره من', skills: 'تخصص‌ها', articles: 'مقاله‌ها', contact: 'ارتباط' },
             hero: {
-                role: 'توسعه‌دهنده نرم‌افزار | Backend & Android',
+                badge: 'آموزگار ابتدایی و توسعه‌دهنده نرم‌افزار',
                 name: 'امیرحسین مرادی زاده',
-                dobKey: 'تاریخ تولد',
-                dobVal: '۱۳ خرداد ۱۳۸۲ (June 3, 2003)',
-                bio: 'توسعه‌دهنده نرم‌افزار با تسلط بر زبان‌های پایتون (Python)، جاوااسکریپت (JavaScript) و جاوا (Java). متمرکز بر طراحی معماری‌های مقیاس‌پذیر سمت سرور با فریم‌ورک‌هایی نظیر FastAPI و Node.js، و همچنین توسعه اپلیکیشن‌های بومی و روان اندروید. علاقه‌مند به حل چالش‌های منطقی پیچیده و پژوهش در حوزه فناوری.',
-                emailBtn: 'ارسال ایمیل (Initialize Contact)',
-                status: 'آماده همکاری در پروژه‌های مقیاس‌پذیر و چالش‌برانگیز'
+                bio: 'من یک آموزگار ابتدایی هستم که به دنیای برنامه‌نویسی و تکنولوژی‌های آموزشی (EdTech) عشق می‌ورزم. تلاش می‌کنم با ترکیب تجربه حضور در کلاس درس و مهارت‌های توسعه وب و بک‌اند، ابزارهای نوینی برای یادگیری بسازم. از توسعه سرویس‌های سمت سرور تا طراحی رابط‌های کاربری جذاب، هدف من خلق ارزش در آموزش است.',
+                resumeBtn: 'دانلود رزومه',
+                githubBtn: 'گیت‌هاب',
+                linkedinBtn: 'لینکدین'
             },
             sections: {
-                stack: 'tech_stack.json',
-                architecture: 'system_architecture.log',
-                contact: 'initiate_handshake()'
+                skills: 'مهارت‌ها و تخصص‌های من',
+                articles: 'مقاله‌ها و پژوهش‌ها',
+                contact: 'راه‌های ارتباطی'
             },
-            categories: {
-                backend: 'سرویس‌های سمت سرور',
-                mobile: 'توسعه اندروید',
-                tools: 'زبان‌ها و زیرساخت'
-            },
-            archPoints: [
+            skills: [
                 {
-                    title: 'توسعه بک‌اند (Python / JavaScript)',
-                    desc: 'ساخت و توسعه اندپوینت‌های پرسرعت و غیرهمزمان (Async) با استفاده از فریم‌ورک‌های FastAPI در پایتون و Node.js در جاوااسکریپت، همراه با مستندسازی دقیق OpenAPI.'
+                    title: 'توسعه بک‌اند (Backend)',
+                    desc: 'طراحی معماری سرور، پیاده‌سازی APIهای پرسرعت با FastAPI و Node.js همراه با مدیریت پایگاه‌داده.',
+                    icon: <Server className="w-6 h-6 text-indigo-400" />
                 },
                 {
-                    title: 'طراحی پایگاه داده و منطق سرور',
-                    desc: 'مدل‌سازی بهینه پایگاه‌های داده، مدیریت جریان اطلاعات (Data Flow)، بهینه‌سازی کوئری‌ها و پیاده‌سازی سرویس‌های توزیع‌شده.'
+                    title: 'توسعه اندروید (Android)',
+                    desc: 'برنامه‌نویسی و توسعه اپلیکیشن‌های بومی و روان موبایل با تمرکز بر تجربه کاربری و معماری استاندارد.',
+                    icon: <Smartphone className="w-6 h-6 text-indigo-400" />
                 },
                 {
-                    title: 'توسعه بومی اندروید (Java)',
-                    desc: 'برنامه‌نویسی و توسعه اپلیکیشن‌های اندرویدی با زبان جاوا (Java)، تمرکز بر معماری استاندارد نرم‌افزار، مدیریت Stateها و ارتباط امن با API.'
+                    title: 'تکنولوژی آموزشی (EdTech)',
+                    desc: 'ترکیب اصول پداگوژی و فناوری برای ساخت نرم‌افزارهای دستیار معلم و پلتفرم‌های تعاملی دانش‌آموزان.',
+                    icon: <GraduationCap className="w-6 h-6 text-indigo-400" />
+                }
+            ],
+            articles: [
+                {
+                    title: 'تاثیر هوش مصنوعی مولد بر یادگیری در تکنولوژی آموزشی',
+                    date: 'شهریور ۱۴۰۵',
+                    readTime: 'مقاله پژوهشی (APA)',
+                    tag: 'EdTech'
+                },
+                {
+                    title: 'چرا معلمان باید با تفکر الگوریتمی آشنا شوند؟',
+                    date: 'به زودی',
+                    readTime: '۵ دقیقه مطالعه',
+                    tag: 'توسعه فردی'
                 }
             ]
         },
         en: {
             dir: 'ltr',
             font: 'font-mono',
-            nav: { stack: 'Tech Stack', architecture: 'Architecture', contact: 'Contact' },
-            terminalTitle: 'bash - amirhossein@dev-node: ~',
+            nav: { about: 'About', skills: 'Skills', articles: 'Articles', contact: 'Contact' },
             hero: {
-                role: 'Software Engineer | Backend & Android',
+                badge: 'Primary Teacher & Software Developer',
                 name: 'Amirhossein Moradizadeh',
-                dobKey: 'Date of Birth',
-                dobVal: 'June 3, 2003',
-                bio: 'Software developer proficient in Python, JavaScript, and Java. Dedicated to building high-concurrency server-side architectures using FastAPI and Node.js, alongside developing native Android applications. Passionate about solving complex logical challenges and technology research.',
-                emailBtn: 'Initialize Mail()',
-                status: 'Available for high-scale software engineering roles'
+                bio: 'I am a 6th-grade teacher (Shahid Salahkar School) with a deep passion for programming and Educational Technology (EdTech). By combining my classroom experience with web and backend development skills, I strive to build innovative learning tools. From server-side architectures to engaging UIs, my goal is to create value in education.',
+                resumeBtn: 'Download CV',
+                githubBtn: 'GitHub',
+                linkedinBtn: 'LinkedIn'
             },
             sections: {
-                stack: 'tech_stack.json',
-                architecture: 'system_architecture.log',
-                contact: 'initiate_handshake()'
+                skills: 'My Expertise',
+                articles: 'Articles & Research',
+                contact: 'Get In Touch'
             },
-            categories: {
-                backend: 'Server-Side Engineering',
-                mobile: 'Android Development',
-                tools: 'Languages & Infra'
-            },
-            archPoints: [
+            skills: [
                 {
-                    title: 'Backend Engineering (Python / JS)',
-                    desc: 'Building high-performance asynchronous API endpoints using FastAPI (Python) and Node.js (JavaScript) with automated documentation.'
+                    title: 'Backend Development',
+                    desc: 'Server architecture and high-speed API implementation using FastAPI and Node.js with efficient database management.',
+                    icon: <Server className="w-6 h-6 text-indigo-400" />
                 },
                 {
-                    title: 'Database & Server Logic',
-                    desc: 'Architecting optimized database schemas, managing data flows, query optimization, and implementing distributed background tasks.'
+                    title: 'Android Development',
+                    desc: 'Native mobile application development focusing on smooth user experience and clean software architecture.',
+                    icon: <Smartphone className="w-6 h-6 text-indigo-400" />
                 },
                 {
-                    title: 'Native Android Development (Java)',
-                    desc: 'Developing robust Android applications using Java, emphasizing clean architecture, reactive state management, and secure API integration.'
+                    title: 'Educational Tech (EdTech)',
+                    desc: 'Bridging pedagogy and technology to build teacher-assistant software and interactive student platforms.',
+                    icon: <GraduationCap className="w-6 h-6 text-indigo-400" />
+                }
+            ],
+            articles: [
+                {
+                    title: 'Impact of Generative AI on Learning in EdTech',
+                    date: 'Sept 2026',
+                    readTime: 'Academic Paper (APA)',
+                    tag: 'EdTech'
+                },
+                {
+                    title: 'Why Teachers Should Learn Algorithmic Thinking?',
+                    date: 'Coming Soon',
+                    readTime: '5 min read',
+                    tag: 'Self-Dev'
                 }
             ]
         }
@@ -90,201 +123,149 @@ export default function Portfolio() {
     const t = dict[lang]
 
     return (
-        <div dir={t.dir} className={`min-h-screen bg-[#0a0f0d] text-emerald-100 ${t.font} selection:bg-emerald-500 selection:text-black`}>
-            {/* Top Console Bar */}
-            <header className="border-b border-emerald-950 bg-[#060a08]/90 backdrop-blur sticky top-0 z-50">
-                <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-                    <div className="flex items-center gap-2 font-mono text-emerald-400 font-semibold text-sm tracking-wider">
-                        <Terminal className="w-4 h-4" />
-                        <span>sys_id: amirhossein-dev</span>
+        <div dir={t.dir} className={`min-h-screen bg-slate-950 text-slate-200 ${t.font} selection:bg-indigo-500/30`}>
+            {/* Navbar */}
+            <header className="border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+                <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-indigo-400 font-bold text-lg">
+                        <BookOpen className="w-5 h-5" />
+                        <span>EduDev</span>
                     </div>
 
-                    <div className="flex items-center gap-4 text-xs font-mono">
-                        <a href="#stack" className="text-emerald-500/80 hover:text-emerald-400 transition-colors hidden sm:inline tracking-wider">
-                            ./{t.nav.stack}
-                        </a>
-                        <a href="#architecture" className="text-emerald-500/80 hover:text-emerald-400 transition-colors hidden sm:inline tracking-wider">
-                            ./{t.nav.architecture}
-                        </a>
+                    <div className="flex items-center gap-6 text-sm font-medium">
+                        <nav className="hidden md:flex gap-6 text-slate-400">
+                            <a href="#skills" className="hover:text-indigo-300 transition-colors">{t.nav.skills}</a>
+                            <a href="#articles" className="hover:text-indigo-300 transition-colors">{t.nav.articles}</a>
+                            <a href="#contact" className="hover:text-indigo-300 transition-colors">{t.nav.contact}</a>
+                        </nav>
                         <button
                             onClick={toggleLang}
-                            className="flex items-center gap-1.5 px-3 py-1 rounded bg-emerald-950/60 border border-emerald-800/80 text-emerald-300 hover:bg-emerald-900/60 transition-all cursor-pointer"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 transition-all cursor-pointer text-slate-300"
                         >
-                            <Languages className="w-3.5 h-3.5" />
-                            <span className="tracking-widest font-bold">{lang === 'fa' ? 'EN' : 'FA'}</span>
+                            <Languages className="w-4 h-4" />
+                            <span className="font-bold">{lang === 'fa' ? 'EN' : 'FA'}</span>
                         </button>
                     </div>
                 </div>
             </header>
 
-            <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
-                {/* Terminal Window Hero */}
-                <section className="rounded-xl border border-emerald-900/70 bg-[#0d1410] shadow-2xl shadow-emerald-950/50 overflow-hidden">
-                    <div className="bg-[#080d0a] px-4 py-3 border-b border-emerald-950 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <div className="w-3.5 h-3.5 rounded-full bg-red-500/80 border border-red-700/50"></div>
-                            <div className="w-3.5 h-3.5 rounded-full bg-amber-500/80 border border-amber-700/50"></div>
-                            <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/80 border border-emerald-700/50"></div>
+            <main className="max-w-5xl mx-auto px-6 py-16 space-y-24">
+                {/* Hero Section with Photo */}
+                <section className="flex flex-col-reverse md:flex-row items-center gap-12 justify-between">
+                    <div className="flex-1 space-y-6 text-center md:text-start">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+                            <Code2 className="w-4 h-4" />
+                            <span>{t.hero.badge}</span>
                         </div>
-                        <span className="text-xs font-mono text-emerald-600/80 tracking-widest">{t.terminalTitle}</span>
-                        <div className="w-12"></div>
-                    </div>
-
-                    <div className="p-6 md:p-10 space-y-6">
-                        <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-950/50 border border-emerald-800/50 px-3 py-1.5 rounded">
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span>{t.hero.role}</span>
-                        </div>
-
-                        <div className="space-y-3">
-                            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-                                {t.hero.name}
-                            </h1>
-                            <p className="text-sm font-mono text-emerald-500/80">
-                                <span className="text-emerald-700">&gt;</span> {t.hero.dobKey}: <span className="text-emerald-300">{t.hero.dobVal}</span>
-                            </p>
-                        </div>
-
-                        <p className="text-base md:text-lg text-emerald-100/90 leading-loose max-w-3xl text-justify">
+                        
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                            {t.hero.name}
+                        </h1>
+                        
+                        <p className="text-lg text-slate-400 leading-relaxed max-w-2xl text-justify md:text-start">
                             {t.hero.bio}
                         </p>
 
-                        <div className="pt-4 flex flex-wrap items-center gap-4">
-                            <a
-                                href="mailto:amirhosseinmoradizadeh456@gmail.com"
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/20"
-                            >
-                                <Mail className="w-4 h-4" />
-                                <span>{t.hero.emailBtn}</span>
+                        {/* Social & Resume Links */}
+                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                            <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-all shadow-lg shadow-indigo-600/20">
+                                <FileText className="w-4 h-4" />
+                                <span>{t.hero.resumeBtn}</span>
+                            </a>
+                            <a href="https://github.com/Priest1400" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium transition-all border border-slate-700">
+                                <Github className="w-4 h-4" />
+                                <span>{t.hero.githubBtn}</span>
+                            </a>
+                            <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium transition-all border border-slate-700">
+                                <Linkedin className="w-4 h-4" />
+                                <span>{t.hero.linkedinBtn}</span>
                             </a>
                         </div>
+                    </div>
 
-                        <div className="pt-2 text-sm text-emerald-600 flex items-center gap-2 font-mono">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                            <span>{t.hero.status}</span>
+                    {/* Profile Photo Area */}
+                    <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
+                        <div className="absolute inset-0 bg-indigo-500/20 rounded-full blur-2xl animate-pulse"></div>
+                        <div className="relative w-full h-full rounded-full border-4 border-slate-800 overflow-hidden bg-slate-900 flex items-center justify-center shadow-2xl">
+                            {/* جایگذاری عکس شما: */}
+                            {/* <img src="/your-photo.jpg" alt="Profile" className="w-full h-full object-cover" /> */}
+                            
+                            {/* آیکون موقت تا زمانی که عکس بگذارید */}
+                            <Layers className="w-16 h-16 text-slate-700" />
                         </div>
                     </div>
                 </section>
 
-                {/* Tech Stack JSON Viewer */}
-                <section id="stack" className="space-y-6">
-                    <div className="flex items-center gap-2 font-mono text-emerald-400 text-xl font-bold">
-                        <Database className="w-6 h-6" />
-                        <h2>{t.sections.stack}</h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        {/* Languages & Core */}
-                        <div className="p-6 rounded-xl border border-emerald-950 bg-[#0d1410] hover:border-emerald-700 transition-colors font-mono shadow-md">
-                            <div className="flex items-center gap-2 text-emerald-300 text-sm font-bold mb-4 pb-3 border-b border-emerald-900/50">
-                                <Code2 className="w-4 h-4 text-emerald-400" />
-                                <h3 className="tracking-wide">{t.categories.tools}</h3>
-                            </div>
-                            <ul className="space-y-2.5 text-xs text-emerald-100/90">
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">Python</span>
-                                    <span className="text-emerald-500 text-[10px]">Advanced</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">JavaScript</span>
-                                    <span className="text-emerald-500 text-[10px]">Advanced</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">Java</span>
-                                    <span className="text-emerald-500 text-[10px]">Core / SDK</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Backend Column */}
-                        <div className="p-6 rounded-xl border border-emerald-950 bg-[#0d1410] hover:border-emerald-700 transition-colors font-mono shadow-md">
-                            <div className="flex items-center gap-2 text-emerald-300 text-sm font-bold mb-4 pb-3 border-b border-emerald-900/50">
-                                <Server className="w-4 h-4 text-emerald-400" />
-                                <h3 className="tracking-wide">{t.categories.backend}</h3>
-                            </div>
-                            <ul className="space-y-2.5 text-xs text-emerald-100/90">
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">FastAPI</span>
-                                    <span className="text-emerald-500 text-[10px]">Async APIs</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">Node.js</span>
-                                    <span className="text-emerald-500 text-[10px]">Server Logic</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">RESTful</span>
-                                    <span className="text-emerald-500 text-[10px]">Architecture</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Android Column */}
-                        <div className="p-6 rounded-xl border border-emerald-950 bg-[#0d1410] hover:border-emerald-700 transition-colors font-mono shadow-md">
-                            <div className="flex items-center gap-2 text-emerald-300 text-sm font-bold mb-4 pb-3 border-b border-emerald-900/50">
-                                <Smartphone className="w-4 h-4 text-emerald-400" />
-                                <h3 className="tracking-wide">{t.categories.mobile}</h3>
-                            </div>
-                            <ul className="space-y-2.5 text-xs text-emerald-100/90">
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">Android SDK</span>
-                                    <span className="text-emerald-500 text-[10px]">Java Native</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">MVVM</span>
-                                    <span className="text-emerald-500 text-[10px]">Clean Arch</span>
-                                </li>
-                                <li className="flex items-center justify-between bg-[#060a08] px-3 py-2.5 rounded border border-emerald-900/40">
-                                    <span className="font-bold">API Sync</span>
-                                    <span className="text-emerald-500 text-[10px]">Networking</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                {/* System Architecture Section */}
-                <section id="architecture" className="space-y-6">
-                    <div className="flex items-center gap-2 font-mono text-emerald-400 text-xl font-bold">
-                        <Cpu className="w-6 h-6" />
-                        <h2>{t.sections.architecture}</h2>
-                    </div>
-
+                {/* Skills & Expertise */}
+                <section id="skills" className="space-y-8">
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                        <span className="w-8 h-1 bg-indigo-500 rounded-full"></span>
+                        {t.sections.skills}
+                    </h2>
+                    
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {t.archPoints.map((point, index) => (
-                            <div
-                                key={index}
-                                className="p-8 rounded-xl border border-emerald-950 bg-[#0d1410] hover:border-emerald-700 transition-all flex flex-col justify-between shadow-lg"
-                            >
+                        {t.skills.map((skill, index) => (
+                            <div key={index} className="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-colors group">
+                                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                    {skill.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-200 mb-3">{skill.title}</h3>
+                                <p className="text-slate-400 leading-relaxed text-sm">{skill.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Articles Section */}
+                <section id="articles" className="space-y-8">
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                        <span className="w-8 h-1 bg-indigo-500 rounded-full"></span>
+                        {t.sections.articles}
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {t.articles.map((article, index) => (
+                            <div key={index} className="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between hover:bg-slate-800/50 transition-colors cursor-pointer group">
                                 <div>
-                                    <div className="text-xs font-mono text-emerald-600 mb-3 font-bold">// 0{index + 1}</div>
-                                    <h3 className="text-lg font-bold text-white mb-4">{point.title}</h3>
-                                    <p className="text-sm text-emerald-100/80 leading-loose text-justify">{point.desc}</p>
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className="px-3 py-1 rounded-md bg-indigo-500/10 text-indigo-400 text-xs font-medium">
+                                            {article.tag}
+                                        </span>
+                                        <span className="text-xs text-slate-500 font-mono">{article.date}</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold text-slate-200 mb-2 group-hover:text-indigo-400 transition-colors">
+                                        {article.title}
+                                    </h3>
+                                </div>
+                                <div className="mt-6 flex items-center justify-between text-sm text-slate-400">
+                                    <span>{article.readTime}</span>
+                                    <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Contact Endpoint */}
-                <section className="rounded-xl border border-emerald-900/60 bg-[#060a08] p-8 text-center space-y-5 font-mono shadow-inner">
-                    <div className="text-sm text-emerald-600 font-bold">// {t.sections.contact}</div>
-                    <div className="text-base md:text-xl text-emerald-200 tracking-wider">
-                        amirhosseinmoradizadeh456@gmail.com
+                {/* Contact Section */}
+                <section id="contact" className="py-12 border-t border-slate-800 flex flex-col items-center text-center space-y-6">
+                    <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-2">
+                        <Mail className="w-8 h-8" />
                     </div>
-                    <div className="pt-3">
-                        <a
-                            href="mailto:amirhosseinmoradizadeh456@gmail.com"
-                            className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 border-b border-emerald-400/30 hover:border-emerald-300 pb-1 transition-all"
-                        >
-                            <Mail className="w-4 h-4" />
-                            <span>send_packet()</span>
-                        </a>
-                    </div>
+                    <h2 className="text-3xl font-bold text-white">{t.sections.contact}</h2>
+                    <p className="text-slate-400 max-w-md">
+                        {lang === 'fa' 
+                            ? 'برای همکاری در پروژه‌های توسعه نرم‌افزار، تکنولوژی آموزشی یا ارتباط دوستانه، خوشحال میشم با من در تماس باشید.'
+                            : 'Feel free to reach out for software development projects, EdTech collaborations, or just a friendly chat.'}
+                    </p>
+                    <a href="mailto:amirhosseinmoradizadeh456@gmail.com" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all shadow-lg shadow-indigo-600/25 mt-4">
+                        <Mail className="w-5 h-5" />
+                        <span>amirhosseinmoradizadeh456@gmail.com</span>
+                    </a>
                 </section>
             </main>
 
-            <footer className="border-t border-emerald-950 py-8 text-center text-xs font-mono text-emerald-700 font-bold tracking-widest">
-                EOF -- exit code 0
+            <footer className="py-8 text-center text-sm text-slate-600 border-t border-slate-900 bg-slate-950">
+                <p>© 2026 Amirhossein Moradizadeh. Combining Education & Code.</p>
             </footer>
         </div>
     )
